@@ -21,4 +21,5 @@ app.get('/', (req, res) => {
   res.send('HR Reporting & Placement Management API Running');
 });
 
-module.exports = serverless(app);
+// Export handler for serverless deployment
+module.exports.handler = serverless(app);
