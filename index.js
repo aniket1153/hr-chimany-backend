@@ -15,10 +15,9 @@ app.use('/api/auth', require('./routes/Authroute'));
 app.use('/api/reports', require('./routes/Reportroutes'));
 app.use('/api/recruitment', require('./routes/RecrutmentRoute'));
 
-
 app.get('/', (req, res) => {
   res.send('HR Reporting & Placement Management API Running');
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(` Server started on port ${PORT}`));
+// ✅ Export the app as a serverless function
+module.exports = app;
