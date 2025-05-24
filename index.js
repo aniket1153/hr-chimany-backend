@@ -1,3 +1,5 @@
+
+
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -7,23 +9,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
-// CORS setup: allow only your frontend origin
-app.use(cors({
-  origin: 'http://localhost:5173',  // your frontend URL
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
-}));
-
-// Handle preflight OPTIONS requests for all routes
-app.options('*', (req, res) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  res.sendStatus(200);
-});
-
+app.use(cors());
 app.use(express.json());
 
 // Routes
@@ -35,4 +21,5 @@ app.get('/', (req, res) => {
   res.send('HR Reporting & Placement Management API Running');
 });
 
+// app.listen(PORT, () => console.log(` Server started on port ${PORT}`));
 module.exports = app;
