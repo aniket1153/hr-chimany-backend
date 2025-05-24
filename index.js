@@ -7,13 +7,16 @@ dotenv.config();
 connectDB();
 
 const app = express();
+
+// CORS setup: allow only your frontend origin
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'http://localhost:5173',  // your frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
+  credentials: true
 }));
 
+// Handle preflight OPTIONS requests for all routes
 app.options('*', (req, res) => {
   res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
   res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
@@ -32,5 +35,4 @@ app.get('/', (req, res) => {
   res.send('HR Reporting & Placement Management API Running');
 });
 
-// ✅ Export the app as a serverless function
 module.exports = app;
