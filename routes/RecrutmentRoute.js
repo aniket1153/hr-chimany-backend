@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { authenticate, authorize } = require('../middleawre/AuthMIddleware');
+const { authenticate, authorize } = require('../middleawre/AuthMiddleware');
+
+
+
+
 const recruitmentController = require('../controller/RecruitmentController');
 
 // ----- Job Posts -----
