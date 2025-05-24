@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
+const serverless = require('serverless-http');
 
 dotenv.config();
 connectDB();
@@ -20,4 +21,4 @@ app.get('/', (req, res) => {
   res.send('HR Reporting & Placement Management API Running');
 });
 
-module.exports = app;
+module.exports = serverless(app);
